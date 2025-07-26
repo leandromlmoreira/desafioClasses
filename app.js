@@ -220,8 +220,13 @@ function buildCard(h) {
   const artBox = root.querySelector('.card-front .art-placeholder');
   if (artBox) {
     const img = new Image();
-    img.src = `stream/${h.id}.png`;
+    const imageName = h.id.charAt(0).toUpperCase() + h.id.slice(1);
+    img.src = `stream/${imageName}.png`;
     img.alt = h.nome;
+    console.log(`Tentando carregar imagem: stream/${imageName}.png`);
+    img.onerror = () => {
+      console.warn(`Imagem não encontrada: stream/${imageName}.png`);
+    };
     artBox.innerHTML = '';
     artBox.appendChild(img);
   }
@@ -234,8 +239,12 @@ function buildCard(h) {
     const pa=panel.querySelector('.ability-art-placeholder')
        if(pa){
          const img=new Image();
-         img.src=`stream/${h.id}.png`;
+         const imageName = h.id.charAt(0).toUpperCase() + h.id.slice(1);
+         img.src=`stream/${imageName}.png`;
          img.alt=h.nome;
+         img.onerror = () => {
+           console.warn(`Imagem não encontrada: stream/${imageName}.png`);
+         };
          pa.innerHTML='';
          pa.appendChild(img)
        }
