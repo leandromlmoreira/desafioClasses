@@ -1,0 +1,216 @@
+{
+  "heroes": [
+    {
+      "id": "kael",
+      "name": "Kael",
+      "type": "Mago",
+      "level": 1,
+      "xp": 0,
+      "xpToNext": 100,
+      "hp": 300,
+      "maxHp": 300,
+      "mp": 50,
+      "maxMp": 150,
+      "sp": 0,
+      "maxSp": 0,
+      "description": "Mestre das artes arcanas, Kael domina o poder elemental com precisão devastadora. Sua conexão mística permite canalizar energias primordiais através de seu bastão ancestral.",
+      "combatStats": {
+        "attack": 20,
+        "spellPower": 90,
+        "defense": 10
+      },
+              "abilities": {
+        "attack": {
+          "name": "Bastão Arcano",
+          "description": "Ataque básico com bastão mágico que canaliza energia arcana",
+          "damage": 12,
+          "cost": 0
+        },
+        "frost": {
+          "name": "Rajada de Gelo",
+          "description": "Lança uma rajada de gelo que congela o inimigo e reduz sua velocidade. Dano: 20, Custo: 30 MP",
+          "damage": 20,
+          "cost": 30,
+          "type": "pwr"
+        },
+        "slam": {
+          "name": "Explosão Arcana",
+          "description": "Libera uma onda de energia mágica que explode no alvo. Dano: 28, Custo: 45 MP",
+          "damage": 28,
+          "cost": 45,
+          "type": "pwr"
+        },
+        "meteor": {
+          "name": "Meteoro Estelar",
+          "description": "Invoca um meteoro celestial que causa dano massivo. Dano: 45, Custo: 90 MP",
+          "damage": 45,
+          "cost": 90,
+          "type": "ult"
+        }
+      }
+    },
+    {
+      "id": "tenzin",
+      "name": "Tenzin",
+      "type": "Monge",
+      "level": 1,
+      "xp": 0,
+      "xpToNext": 100,
+      "hp": 320,
+      "maxHp": 320,
+      "mp": 0,
+      "maxMp": 0,
+      "sp": 40,
+      "maxSp": 120,
+      "description": "Monge sábio que transcendeu a dualidade corpo-mente. Sua disciplina espiritual permite canalizar chi para técnicas de combate e cura.",
+      "combatStats": {
+        "attack": 30,
+        "spellPower": 35,
+        "defense": 55
+      },
+              "abilities": {
+        "attack": {
+          "name": "Punho de Ferro",
+          "description": "Golpe preciso que concentra energia vital nos punhos",
+          "damage": 18,
+          "cost": 0
+        },
+        "frost": {
+          "name": "Palma Curativa",
+          "description": "Técnica de cura que restaura vitalidade através do chi. Cura: 20% SP, Reduz dano: 35%, Custo: 35 SP",
+          "damage": 0,
+          "cost": 35,
+          "type": "def",
+          "heal": 0.2,
+          "guard": 0.35
+        },
+        "slam": {
+          "name": "Pancada Vital",
+          "description": "Golpe devastador que libera energia acumulada. Dano: 25, Custo: 40 SP",
+          "damage": 25,
+          "cost": 40,
+          "type": "pwr"
+        },
+        "meteor": {
+          "name": "Tempestade de Chi",
+          "description": "Libera toda a energia vital em uma explosão de poder. Dano: 35, Custo: 70 SP",
+          "damage": 35,
+          "cost": 70,
+          "type": "ult"
+        }
+      }
+    },
+    {
+      "id": "ragnar",
+      "name": "Ragnar",
+      "type": "Guerreiro",
+      "level": 1,
+      "xp": 0,
+      "xpToNext": 100,
+      "hp": 350,
+      "maxHp": 350,
+      "mp": 0,
+      "maxMp": 0,
+      "sp": 30,
+      "maxSp": 100,
+      "description": "Guerreiro lendário cuja lâmina já provou seu valor em milhares de batalhas. Sua força bruta e técnica refinada fazem dele um oponente temível.",
+      "combatStats": {
+        "attack": 75,
+        "spellPower": 15,
+        "defense": 50
+      },
+              "abilities": {
+        "attack": {
+          "name": "Corte Preciso",
+          "description": "Ataque básico com espada que combina força e técnica",
+          "damage": 22,
+          "cost": 0
+        },
+        "frost": {
+          "name": "Postura Defensiva",
+          "description": "Assume uma postura defensiva que reduz dano recebido. Reduz dano: 35%, Custo: 25 SP",
+          "damage": 0,
+          "cost": 25,
+          "type": "def",
+          "guard": 0.35
+        },
+        "slam": {
+          "name": "Golpe Devastador",
+          "description": "Ataque poderoso que concentra toda a força do guerreiro. Dano: 32, Custo: 35 SP",
+          "damage": 32,
+          "cost": 35,
+          "type": "pwr"
+        },
+        "meteor": {
+          "name": "Fúria Berserker",
+          "description": "Entra em estado de fúria, aumentando dano e velocidade. Dano: 42, Custo: 60 SP",
+          "damage": 42,
+          "cost": 60,
+          "type": "ult"
+        }
+      }
+    },
+    {
+      "id": "akari",
+      "name": "Akari",
+      "type": "Ninja",
+      "level": 1,
+      "xp": 0,
+      "xpToNext": 100,
+      "hp": 280,
+      "maxHp": 280,
+      "mp": 0,
+      "maxMp": 0,
+      "sp": 50,
+      "maxSp": 140,
+      "description": "Ninja das sombras que domina a arte da invisibilidade e ataques furtivos. Sua agilidade e técnicas secretas fazem dela uma assassina letal.",
+      "combatStats": {
+        "attack": 60,
+        "spellPower": 45,
+        "defense": 25
+      },
+              "abilities": {
+        "attack": {
+          "name": "Shuriken Preciso",
+          "description": "Lança shurikens com precisão mortal",
+          "damage": 18,
+          "cost": 0
+        },
+        "frost": {
+          "name": "Vanish",
+          "description": "Técnica de invisibilidade que permite ataques furtivos. Reduz dano: 35%, Custo: 30 SP",
+          "damage": 0,
+          "cost": 30,
+          "type": "def",
+          "guard": 0.35
+        },
+        "slam": {
+          "name": "Golpe das Sombras",
+          "description": "Ataque furtivo que causa dano crítico. Dano: 28, Custo: 40 SP",
+          "damage": 28,
+          "cost": 40,
+          "type": "pwr"
+        },
+        "meteor": {
+          "name": "Tempestade de Lâminas",
+          "description": "Libera uma tempestade de shurikens em todas as direções. Dano: 38, Custo: 65 SP",
+          "damage": 38,
+          "cost": 65,
+          "type": "ult"
+        }
+      }
+    }
+  ],
+  "xpLevels": [
+    { "level": 1, "xpRequired": 0 },
+    { "level": 2, "xpRequired": 100 },
+    { "level": 3, "xpRequired": 250 },
+    { "level": 4, "xpRequired": 450 },
+    { "level": 5, "xpRequired": 700 },
+    { "level": 6, "xpRequired": 1000 },
+    { "level": 7, "xpRequired": 1350 },
+    { "level": 8, "xpRequired": 1750 },
+    { "level": 9, "xpRequired": 2200 },
+    { "level": 10, "xpRequired": 2700 }
+  ]
+} 
