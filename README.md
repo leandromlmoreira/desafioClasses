@@ -55,7 +55,7 @@ Sistema de combate por turnos desenvolvido em JavaScript que implementa um jogo 
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/desafioClasses.git
+git clone https://github.com/leandromlmoreira/desafioClasses
 
 # Entre no diretório
 cd desafioClasses
