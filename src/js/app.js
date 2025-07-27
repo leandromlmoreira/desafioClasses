@@ -1333,6 +1333,5 @@ document.getElementById('btnClose').addEventListener('click', resetArena);
 document.getElementById('btnReset').addEventListener('click', resetAllLevels);
 window.addEventListener('resize', () => {
   if (arena.classList.contains('show')) positionBattleLog();
-  if (tutorialOverlay.classList.contains('show')) showTutorialStep();
 });
 document.addEventListener('DOMContentLoaded', loadHeroesData);
