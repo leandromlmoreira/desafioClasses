@@ -33,6 +33,7 @@ _Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas
 - ✅ **Sistema de XP**: Progressão de nível com ganho de experiência
 - ✅ **Habilidades Únicas**: Cada herói possui 4 habilidades diferentes
 - ✅ **Arena de Batalha**: Sistema de duelo entre dois heróis
+- ✅ **Matchmaking Online**: Jogadores podem buscar adversários via WebSocket
 - ✅ **Persistência**: Dados salvos no localStorage
 - ✅ **Design Responsivo**: Interface adaptável a diferentes telas
 
@@ -89,6 +90,13 @@ cd desafioClasses
 # Ou use um servidor local:
 python -m http.server 8000
 # Acesse: http://localhost:8000
+```
+
+### Iniciar Servidor de Matchmaking
+
+```bash
+npm install
+npm run server
 ```
 
 ## 🎨 Interface
@@ -260,7 +268,7 @@ npm run version:bump:major
 - [ ] Sistema de equipamentos
 - [ ] Mais tipos de heróis
 - [ ] Modo história
-- [ ] Multiplayer local
+- [ ] Multiplayer local (matchmaking online básico implementado)
 - [ ] Sistema de ranking
 - [ ] Mais habilidades por herói
 
