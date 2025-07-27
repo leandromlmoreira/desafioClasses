@@ -1335,3 +1335,52 @@ window.addEventListener('resize', () => {
   if (arena.classList.contains('show')) positionBattleLog();
 });
 document.addEventListener('DOMContentLoaded', loadHeroesData);
+
+// Tutorial
+const tutorialOverlay = document.getElementById('tutorialOverlay');
+const tutorialMessage = document.getElementById('tutorialMessage');
+let tutorialStage = 0;
+
+function startTutorial() {
+  tutorialStage = 0;
+  tutorialOverlay.classList.add('show');
+  tutorialMessage.textContent =
+    'Clique com o botão direito em um card para selecionar';
+  document.querySelectorAll('.card-container').forEach((el, idx) => {
+    el.classList.add('tutorial-highlight');
+    if (idx < 2) el.classList.add('tutorial-pulse');
+  });
+}
+
+function endTutorial() {
+  tutorialOverlay.classList.remove('show');
+  document.querySelectorAll('.tutorial-highlight').forEach(el => {
+    el.classList.remove('tutorial-highlight', 'tutorial-pulse');
+  });
+}
+
+document.getElementById('btnTutorial').addEventListener('click', startTutorial);
+
+grid.addEventListener('contextmenu', e => {
+  if (!tutorialOverlay.classList.contains('show')) return;
+  if (tutorialStage === 0) {
+    tutorialMessage.textContent =
+      'Agora clique com o esquerdo para virar o card';
+    tutorialStage = 1;
+  }
+});
+
+grid.addEventListener('click', () => {
+  if (!tutorialOverlay.classList.contains('show')) return;
+  if (tutorialStage === 1) {
+    tutorialMessage.textContent =
+      'Selecione dois heróis e clique em Iniciar Combate';
+    tutorialStage = 2;
+  }
+});
+
+btnStart.addEventListener('click', () => {
+  if (tutorialOverlay.classList.contains('show') && tutorialStage >= 2) {
+    endTutorial();
+  }
+});

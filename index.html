@@ -50,9 +50,7 @@
       <div class="crest"></div>
       <div class="titles">
         <h1 class="page-title">Ethereal</h1>
-        <p class="page-sub">
-          Clique esquerdo: virar carta • Clique direito: selecionar 2 heróis
-        </p>
+        <button id="btnTutorial" class="tutorial-button">Tutorial</button>
       </div>
     </header>
 
@@ -279,6 +277,10 @@
         </div>
       </div>
     </template>
+
+    <div id="tutorialOverlay" class="tutorial-overlay" aria-hidden="true">
+      <div id="tutorialMessage" class="tutorial-message"></div>
+    </div>
 
     <div id="arena" class="arena-overlay">
       <div class="arena-bg"></div>
