@@ -50,9 +50,14 @@
       <div class="crest"></div>
       <div class="titles">
         <h1 class="page-title">Ethereal</h1>
+<<<<<<< HEAD
         <p class="page-sub">
           Clique esquerdo: virar carta • Clique direito: selecionar 2 heróis
         </p>
+=======
+        <button id="btnTutorial" class="tutorial-button">Tutorial</button>
+        <p class="page-sub">Use o botão Tutorial para aprender a jogar</p>
+>>>>>>> parent of 2749b9a (Merge branch 'codex/create-user-registration-system')
       </div>
     </header>
 
@@ -79,6 +84,13 @@
               <button id="btnReset" class="custom-button">
                 <span class="btn-icon">🔄</span>
                 <span class="btn-text">Reset Níveis</span>
+              </button>
+            </div>
+
+            <div class="primary-button">
+              <button id="btnFindMatch" class="custom-button">
+                <span class="btn-icon">🌐</span>
+                <span class="btn-text">Encontrar Partida</span>
               </button>
             </div>
           </div>
@@ -280,6 +292,12 @@
       </div>
     </template>
 
+    <div id="tutorialOverlay" class="tutorial-overlay" aria-hidden="true">
+      <div id="tutorialPointer" class="tutorial-pointer">👇</div>
+      <div id="tutorialMessage" class="tutorial-message"></div>
+      <button id="tutorialNext" class="tutorial-next">Próximo</button>
+    </div>
+
     <div id="arena" class="arena-overlay">
       <div class="arena-bg"></div>
       <div class="stage">
@@ -297,16 +315,7 @@
       </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="src/js/auth.js"></script>
-    <script>
-      requireAuth();
-      if (!localStorage.getItem('userHero')) {
-        window.location.href = 'select-hero.html';
-      }
-      document.getElementById('btnLogout').addEventListener('click', logout);
-    </script>
     <script src="src/js/app.js"></script>
+    <script src="src/js/multiplayer.js"></script>
   </body>
 </html>
