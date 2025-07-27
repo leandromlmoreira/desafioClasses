@@ -121,6 +121,22 @@ async function loadHeroesData() {
       return hero;
     });
     
+    const isFirstTime = !localStorage.getItem('heroesCache');
+    if (isFirstTime) {
+      console.log('Primeira execução - restaurando status...')
+      restoreHeroStats();
+    } else {
+      console.log('Cache encontrado - verificando se precisa restaurar status...')
+      const needsRestore = heroes.some(hero => 
+        (hero.tipo === 'Mago' && hero.mp < hero.mpMax) ||
+        (hero.tipo !== 'Mago' && hero.sp < hero.spMax)
+      );
+      if (needsRestore) {
+        console.log('Status incompletos detectados - restaurando...')
+        restoreHeroStats();
+      }
+    }
+    
     render();
   } catch (error) {
     console.error('Erro ao carregar dados dos heróis:', error);
@@ -337,7 +353,11 @@ function toggleSelect(card,id){
   }
 }
 
-function render(){grid.innerHTML='';heroes.forEach(h=>grid.appendChild(buildCard(h)))}
+function render(){
+  restoreHeroStats()
+  grid.innerHTML=''
+  heroes.forEach(h=>grid.appendChild(buildCard(h)))
+}
 
 function updateAllCards(){
   heroes.forEach(hero => {
@@ -348,6 +368,36 @@ function updateAllCards(){
       const heroDesc = cardElement.querySelector('.card-front .hero-desc')
       if(heroDesc) {
         heroDesc.textContent = hero.desc
+      }
+      
+      const hpFillF = cardElement.querySelector('.card-front .hp-fill')
+      const hpTextF = cardElement.querySelector('.card-front .hp-text')
+      const mpFillF = cardElement.querySelector('.card-front .mana-fill')
+      const mpTextF = cardElement.querySelector('.card-front .mp-text')
+      const spFillF = cardElement.querySelector('.card-front .sp-fill')
+      const spTextF = cardElement.querySelector('.card-front .sp-text')
+      const mpBar = cardElement.querySelector('.card-front .stat-bar.mana')
+      const spBar = cardElement.querySelector('.card-front .stat-bar.sp')
+
+      if(hpFillF && hpTextF) {
+        hpFillF.style.width = pct(hero.hp, hero.hpMax) + '%'
+        hpTextF.textContent = fmt(hero.hp, hero.hpMax)
+      }
+
+      if (hero.tipo === 'Mago') {
+        if(mpFillF && mpTextF) {
+          mpFillF.style.width = pct(hero.mp, hero.mpMax) + '%'
+          mpTextF.textContent = fmt(hero.mp, hero.mpMax)
+        }
+        if (mpBar) mpBar.style.display = 'flex'
+        if (spBar) spBar.style.display = 'none'
+      } else {
+        if(spFillF && spTextF) {
+          spFillF.style.width = pct(hero.sp, hero.spMax) + '%'
+          spTextF.textContent = fmt(hero.sp, hero.spMax)
+        }
+        if (mpBar) mpBar.style.display = 'none'
+        if (spBar) spBar.style.display = 'flex'
       }
       
       const combatStats = cardElement.querySelectorAll('.combat-stat')
@@ -1017,11 +1067,25 @@ function finalizarCombate(res){
     else{duelR.classList.add('winner');duelL.classList.add('loser')}
       
       setTimeout(()=>{
+        restoreHeroStats()
         updateAllCards()
       }, 2000)
     },100)
     setTimeout(()=>{battleLog.classList.add('fade-out');setTimeout(()=>battleLog.innerHTML='',500)},2000)
   },900)
+}
+
+function restoreHeroStats(){
+  heroes.forEach(hero => {
+    hero.hp = hero.hpMax
+    if(hero.tipo === 'Mago') {
+      hero.mp = hero.mpMax
+    } else {
+      hero.mp = 0
+      hero.sp = hero.spMax
+    }
+    console.log(`Restaurando ${hero.nome}: HP=${hero.hp}/${hero.hpMax}, MP=${hero.mp}/${hero.mpMax}, SP=${hero.sp}/${hero.spMax}`)
+  })
 }
 
 function resetArena(){
@@ -1039,6 +1103,7 @@ function resetArena(){
   })
   
   setTimeout(() => {
+    restoreHeroStats()
     updateAllCards()
   }, 100)
 }
@@ -1051,12 +1116,10 @@ function resetAllLevels(){
       hero.xpToNext = 100
       hero.hp = hero.hpMax
       if(hero.tipo === 'Mago') {
-        hero.mp = 50
+        hero.mp = hero.mpMax
       } else {
         hero.mp = 0
-        if(hero.tipo === 'Monge') hero.sp = 40
-        else if(hero.tipo === 'Guerreiro') hero.sp = 30
-        else if(hero.tipo === 'Ninja') hero.sp = 50
+        hero.sp = hero.spMax
       }
       hero.saveToCache()
     })

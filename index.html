@@ -5,9 +5,12 @@
   <title>Ethereal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2a2215">
+  <meta name="msapplication-TileColor" content="#2a2215">
   <link rel="icon" type="image/png" href="stream/favicon.png">
   <link rel="shortcut icon" type="image/png" href="stream/favicon.png">
   <link rel="apple-touch-icon" href="stream/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="cards.css">
   <link rel="stylesheet" href="styles.css">
@@ -19,7 +22,15 @@
         console.log('Favicon carregado com sucesso');
       };
       favicon.onerror = function() {
-        console.warn('Erro ao carregar favicon');
+        console.warn('Erro ao carregar favicon - tentando caminho alternativo');
+        const altFavicon = new Image();
+        altFavicon.onload = function() {
+          console.log('Favicon alternativo carregado com sucesso');
+        };
+        altFavicon.onerror = function() {
+          console.warn('Erro ao carregar favicon alternativo');
+        };
+        altFavicon.src = '/favicon.ico';
       };
       favicon.src = 'stream/favicon.png';
     });

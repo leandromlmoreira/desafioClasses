@@ -8,10 +8,22 @@
   ],
   "routes": [
     {
+      "src": "/favicon.ico",
+      "dest": "/stream/favicon.png"
+    },
+    {
+      "src": "/favicon.png",
+      "dest": "/stream/favicon.png"
+    },
+    {
       "src": "/stream/(.*)",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
       }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 } 

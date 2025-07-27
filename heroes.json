@@ -9,7 +9,7 @@
       "xpToNext": 100,
       "hp": 300,
       "maxHp": 300,
-      "mp": 50,
+      "mp": 150,
       "maxMp": 150,
       "sp": 0,
       "maxSp": 0,
@@ -60,7 +60,7 @@
       "maxHp": 320,
       "mp": 0,
       "maxMp": 0,
-      "sp": 40,
+      "sp": 120,
       "maxSp": 120,
       "description": "MESTRE DAS ARTES MARCIAIS, TENZIN TRANSCENDE A DUALIDADE CORPO-MENTE. SUA DISCIPLINA ESPIRITUAL PERMITE CANALIZAR CHI PARA TÉCNICAS DE COMBATE E CURA.",
       "combatStats": {
@@ -111,7 +111,7 @@
       "maxHp": 350,
       "mp": 0,
       "maxMp": 0,
-      "sp": 30,
+      "sp": 100,
       "maxSp": 100,
       "description": "GUERREIRO LENDÁRIO CUJA LÂMINA JÁ PROVOU SEU VALOR EM MILHARES DE BATALHAS. SUA FORÇA BRUTA E TÉCNICA REFINADA FAZEM DELE UM OPONENTE TEMÍVEL.",
       "combatStats": {
@@ -161,7 +161,7 @@
       "maxHp": 280,
       "mp": 0,
       "maxMp": 0,
-      "sp": 50,
+      "sp": 140,
       "maxSp": 140,
       "description": "NINJA DAS SOMBRAS QUE DOMINA A ARTE DA INVISIBILIDADE E ATAQUES FURTIVOS. SUA AGILIDADE E TÉCNICAS SECRETAS FAZEM DELA UMA ASSASSINA LETAL.",
       "combatStats": {
