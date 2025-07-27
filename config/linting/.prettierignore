@@ -1,0 +1,34 @@
+# Dependências
+node_modules/
+
+# Arquivos de build
+dist/
+build/
+
+# Arquivos de imagem
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+
+# Arquivos de fonte
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Arquivos de configuração
+.git/
+.gitignore
+.gitattributes
+.vscode/
+.editorconfig
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp 

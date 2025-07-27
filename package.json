@@ -1,0 +1,49 @@
+{
+  "name": "ethereal-arena-dos-herois",
+  "version": "1.0.1",
+  "description": "Sistema de combate por turnos desenvolvido em JavaScript com diferentes classes de heróis",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "format": "prettier --write \"**/*.{js,json,css,html,md}\"",
+    "format:check": "prettier --check \"**/*.{js,json,css,html,md}\"",
+    "format:watch": "prettier --write \"**/*.{js,json,css,html,md}\" --watch",
+    "pre-commit": "node tools/scripts/scripts/pre-commit.js",
+    "version:current": "node tools/scripts/scripts/version.js current",
+    "version:bump": "node tools/scripts/scripts/version.js bump",
+    "version:bump:patch": "node tools/scripts/scripts/version.js bump patch",
+    "version:bump:minor": "node tools/scripts/scripts/version.js bump minor",
+    "version:bump:major": "node tools/scripts/scripts/version.js bump major",
+    "version:set": "node tools/scripts/scripts/version.js set"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "css",
+    "game",
+    "rpg",
+    "combat",
+    "classes",
+    "objetos",
+    "animations",
+    "localStorage"
+  ],
+  "author": "Leandro Moreira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leandromlmoreira/desafioClasses"
+  },
+  "homepage": "https://desafio-classes.vercel.app",
+  "bugs": {
+    "url": "https://github.com/leandromlmoreira/desafioClasses/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "dependencies": {}
+}

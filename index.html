@@ -1,284 +1,302 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <title>Ethereal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2a2215">
-  <meta name="msapplication-TileColor" content="#2a2215">
-  <link rel="icon" type="image/png" href="stream/favicon.png">
-  <link rel="shortcut icon" type="image/png" href="stream/favicon.png">
-  <link rel="apple-touch-icon" href="stream/favicon.png">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cards.css">
-  <link rel="stylesheet" href="styles.css">
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const favicon = new Image();
-      favicon.onload = function() {
-        console.log('Favicon carregado com sucesso');
-      };
-      favicon.onerror = function() {
-        console.warn('Erro ao carregar favicon - tentando caminho alternativo');
-        const altFavicon = new Image();
-        altFavicon.onload = function() {
-          console.log('Favicon alternativo carregado com sucesso');
-        };
-        altFavicon.onerror = function() {
-          console.warn('Erro ao carregar favicon alternativo');
-        };
-        altFavicon.src = '/favicon.ico';
-      };
-      favicon.src = 'stream/favicon.png';
-    });
-  </script>
-</head>
-<body>
-  <header class="rpg-header">
-    <div class="crest"></div>
-    <div class="titles">
-      <h1 class="page-title">Ethereal</h1>
-      <p class="page-sub">Clique esquerdo: virar carta • Clique direito: selecionar 2 heróis</p>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ethereal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2a2215" />
+    <meta name="msapplication-TileColor" content="#2a2215" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="assets/images/favicon.png"
+    />
+    <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/cards.css" />
+    <link rel="stylesheet" href="src/css/styles.css" />
 
-  <section class="selection-board">
-    <div class="selection-board-inner">
-      <div class="controls">
-        <div class="controls-row">
-          <div class="primary-button">
-            <button id="btnStart" class="custom-button" disabled>
-              <span class="btn-icon">⚔️</span>
-              <span class="btn-text">Iniciar Combate</span>
-            </button>
-          </div>
-          
-          <div class="selection-counter">
-            <div class="counter-icon">🎯</div>
-            <div class="counter-text">
-              <span id="selCount">0</span>/2 <span class="counter-label">heróis selecionados</span>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const favicon = new Image();
+        favicon.onload = function () {
+          console.log('Favicon carregado com sucesso');
+        };
+        favicon.onerror = function () {
+          console.warn(
+            'Erro ao carregar favicon - tentando caminho alternativo'
+          );
+          const altFavicon = new Image();
+          altFavicon.onload = function () {
+            console.log('Favicon alternativo carregado com sucesso');
+          };
+          altFavicon.onerror = function () {
+            console.warn('Erro ao carregar favicon alternativo');
+          };
+          altFavicon.src = '/favicon.ico';
+        };
+        favicon.src = 'assets/images/favicon.png';
+      });
+    </script>
+  </head>
+  <body>
+    <header class="rpg-header">
+      <div class="crest"></div>
+      <div class="titles">
+        <h1 class="page-title">Ethereal</h1>
+        <p class="page-sub">
+          Clique esquerdo: virar carta • Clique direito: selecionar 2 heróis
+        </p>
+      </div>
+    </header>
+
+    <section class="selection-board">
+      <div class="selection-board-inner">
+        <div class="controls">
+          <div class="controls-row">
+            <div class="primary-button">
+              <button id="btnStart" class="custom-button" disabled>
+                <span class="btn-icon">⚔️</span>
+                <span class="btn-text">Iniciar Combate</span>
+              </button>
+            </div>
+
+            <div class="selection-counter">
+              <div class="counter-icon">🎯</div>
+              <div class="counter-text">
+                <span id="selCount">0</span>/2
+                <span class="counter-label">heróis selecionados</span>
+              </div>
+            </div>
+
+            <div class="primary-button">
+              <button id="btnReset" class="custom-button">
+                <span class="btn-icon">🔄</span>
+                <span class="btn-text">Reset Níveis</span>
+              </button>
             </div>
           </div>
-          
-          <div class="primary-button">
-            <button id="btnReset" class="custom-button">
-              <span class="btn-icon">🔄</span>
-              <span class="btn-text">Reset Níveis</span>
-            </button>
+        </div>
+
+        <div id="grid" class="grid"></div>
+      </div>
+    </section>
+
+    <template id="card-template">
+      <div class="card-container">
+        <div class="magical-bg"></div>
+        <div class="game-card">
+          <div class="card-flip-inner">
+            <div class="card-front">
+              <div class="glass-blocker"></div>
+              <div class="card-glow"></div>
+              <div class="card-frame">
+                <div class="level-xp-bar">
+                  <div class="level-section">
+                    <span class="level-number">Lv7</span>
+                  </div>
+                  <div class="xp-section">
+                    <div class="xp-fill"></div>
+                    <div class="xp-text">
+                      <span class="xp-text-full">1,850 / 2,500 XP</span>
+                      <span class="xp-text-short">1.8k/2.5k</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-art">
+                  <div class="art-placeholder"></div>
+                  <div class="art-frame"></div>
+                </div>
+                <div class="card-name">
+                  <h2 class="hero-name">Nome</h2>
+                </div>
+                <div class="card-description">
+                  <div class="description-bg"></div>
+                  <p class="hero-desc">Descrição do herói.</p>
+                </div>
+                <div class="card-stats">
+                  <div class="stat-bar hp">
+                    <div class="stat-icon">HP</div>
+                    <div class="stat-fill-section">
+                      <div class="stat-fill hp-fill" style="width: 85%"></div>
+                      <div class="stat-text hp-text">85 / 100</div>
+                    </div>
+                  </div>
+                  <div class="stat-bar mana">
+                    <div class="stat-icon">MP</div>
+                    <div class="stat-fill-section">
+                      <div class="stat-fill mana-fill" style="width: 50%"></div>
+                      <div class="stat-text mp-text">60 / 120</div>
+                    </div>
+                  </div>
+                  <div class="stat-bar sp">
+                    <div class="stat-icon">SP</div>
+                    <div class="stat-fill-section">
+                      <div class="stat-fill sp-fill" style="width: 50%"></div>
+                      <div class="stat-text sp-text">60 / 120</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-decoration top"></div>
+              <div class="border-decoration bottom"></div>
+              <div class="border-decoration left"></div>
+              <div class="border-decoration right"></div>
+            </div>
+
+            <div class="card-back">
+              <div class="glass-blocker"></div>
+              <div class="card-glow"></div>
+              <div class="card-frame">
+                <div class="level-xp-bar">
+                  <div class="level-section">
+                    <span class="level-number">Lv7</span>
+                  </div>
+                  <div class="xp-section">
+                    <div class="xp-fill"></div>
+                    <div class="xp-text">
+                      <span class="xp-text-full">1,850 / 2,500 XP</span>
+                      <span class="xp-text-short">1.8k/2.5k</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ability-selector">
+                  <div class="ability-tab active" data-ability="attack">⚔️</div>
+                  <div class="ability-tab" data-ability="frost">🛡️</div>
+                  <div class="ability-tab" data-ability="slam">💥</div>
+                  <div class="ability-tab" data-ability="meteor">🔥</div>
+                </div>
+
+                <div class="ability-content">
+                  <div class="ability active" data-ability="attack">
+                    <div class="ability-art">
+                      <div class="ability-art-placeholder"></div>
+                      <div class="ability-art-frame"></div>
+                      <div
+                        class="ability-cost attack-cost ability-cost-text"
+                      ></div>
+                    </div>
+                    <div class="ability-info">
+                      <div class="ability-info-bg"></div>
+                      <div class="ability-header">
+                        <div class="ability-name ability-name-text"></div>
+                      </div>
+                      <div class="ability-description ability-desc-text"></div>
+                    </div>
+                  </div>
+
+                  <div class="ability" data-ability="frost">
+                    <div class="ability-art">
+                      <div class="ability-art-placeholder"></div>
+                      <div class="ability-art-frame"></div>
+                      <div
+                        class="ability-cost defense-cost ability-cost-text"
+                      ></div>
+                    </div>
+                    <div class="ability-info">
+                      <div class="ability-info-bg"></div>
+                      <div class="ability-header">
+                        <div class="ability-name ability-name-text"></div>
+                      </div>
+                      <div class="ability-description ability-desc-text"></div>
+                    </div>
+                  </div>
+
+                  <div class="ability" data-ability="slam">
+                    <div class="ability-art">
+                      <div class="ability-art-placeholder"></div>
+                      <div class="ability-art-frame"></div>
+                      <div
+                        class="ability-cost attack-cost ability-cost-text"
+                      ></div>
+                    </div>
+                    <div class="ability-info">
+                      <div class="ability-info-bg"></div>
+                      <div class="ability-header">
+                        <div class="ability-name ability-name-text"></div>
+                      </div>
+                      <div class="ability-description ability-desc-text"></div>
+                    </div>
+                  </div>
+
+                  <div class="ability" data-ability="meteor">
+                    <div class="ability-art">
+                      <div class="ability-art-placeholder"></div>
+                      <div class="ability-art-frame"></div>
+                      <div class="ability-cost ability-cost-text"></div>
+                    </div>
+                    <div class="ability-info">
+                      <div class="ability-info-bg"></div>
+                      <div class="ability-header">
+                        <div class="ability-name ability-name-text"></div>
+                      </div>
+                      <div class="ability-description ability-desc-text"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-name">
+                  <h2>Combat Abilities</h2>
+                </div>
+
+                <div class="combat-stats">
+                  <div class="combat-stat attack">
+                    <div class="combat-stat-icon">🗡️</div>
+                    <div class="combat-stat-fill-section">
+                      <div class="combat-stat-fill attack-fill"></div>
+                      <div class="combat-stat-text">6 / 20</div>
+                    </div>
+                  </div>
+                  <div class="combat-stat spell-power">
+                    <div class="combat-stat-icon">🔮</div>
+                    <div class="combat-stat-fill-section">
+                      <div class="combat-stat-fill spell-fill"></div>
+                      <div class="combat-stat-text">15 / 20</div>
+                    </div>
+                  </div>
+                  <div class="combat-stat defense">
+                    <div class="combat-stat-icon">🛡️</div>
+                    <div class="combat-stat-fill-section">
+                      <div class="combat-stat-fill defense-fill"></div>
+                      <div class="combat-stat-text">4 / 20</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="border-decoration top"></div>
+              <div class="border-decoration bottom"></div>
+              <div class="border-decoration left"></div>
+              <div class="border-decoration right"></div>
+            </div>
           </div>
         </div>
       </div>
+    </template>
 
-      <div id="grid" class="grid"></div>
-    </div>
-  </section>
-
-  <template id="card-template">
-    <div class="card-container">
-      <div class="magical-bg"></div>
-      <div class="game-card">
-        <div class="card-flip-inner">
-          <div class="card-front">
-            <div class="glass-blocker"></div>
-            <div class="card-glow"></div>
-            <div class="card-frame">
-              <div class="level-xp-bar">
-                <div class="level-section">
-                  <span class="level-number">Lv7</span>
-                </div>
-                <div class="xp-section">
-                  <div class="xp-fill"></div>
-                  <div class="xp-text">
-                    <span class="xp-text-full">1,850 / 2,500 XP</span>
-                    <span class="xp-text-short">1.8k/2.5k</span>
-                  </div>
-                </div>
-              </div>
-              <div class="card-art">
-                <div class="art-placeholder"></div>
-                <div class="art-frame"></div>
-              </div>
-              <div class="card-name">
-                <h2 class="hero-name">Nome</h2>
-              </div>
-              <div class="card-description">
-                <div class="description-bg"></div>
-                <p class="hero-desc">Descrição do herói.</p>
-              </div>
-              <div class="card-stats">
-                <div class="stat-bar hp">
-                  <div class="stat-icon">HP</div>
-                  <div class="stat-fill-section">
-                    <div class="stat-fill hp-fill" style="width:85%"></div>
-                    <div class="stat-text hp-text">85 / 100</div>
-                  </div>
-                </div>
-                <div class="stat-bar mana">
-                  <div class="stat-icon">MP</div>
-                  <div class="stat-fill-section">
-                    <div class="stat-fill mana-fill" style="width:50%"></div>
-                    <div class="stat-text mp-text">60 / 120</div>
-                  </div>
-                </div>
-                <div class="stat-bar sp">
-                  <div class="stat-icon">SP</div>
-                  <div class="stat-fill-section">
-                    <div class="stat-fill sp-fill" style="width:50%"></div>
-                    <div class="stat-text sp-text">60 / 120</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="border-decoration top"></div>
-            <div class="border-decoration bottom"></div>
-            <div class="border-decoration left"></div>
-            <div class="border-decoration right"></div>
-          </div>
-
-          <div class="card-back">
-            <div class="glass-blocker"></div>
-            <div class="card-glow"></div>
-            <div class="card-frame">
-              <div class="level-xp-bar">
-                <div class="level-section">
-                  <span class="level-number">Lv7</span>
-                </div>
-                <div class="xp-section">
-                  <div class="xp-fill"></div>
-                  <div class="xp-text">
-                    <span class="xp-text-full">1,850 / 2,500 XP</span>
-                    <span class="xp-text-short">1.8k/2.5k</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="ability-selector">
-                <div class="ability-tab active" data-ability="attack">⚔️</div>
-                <div class="ability-tab" data-ability="frost">🛡️</div>
-                <div class="ability-tab" data-ability="slam">💥</div>
-                <div class="ability-tab" data-ability="meteor">🔥</div>
-              </div>
-
-              <div class="ability-content">
-                <div class="ability active" data-ability="attack">
-                  <div class="ability-art">
-                    <div class="ability-art-placeholder"></div>
-                    <div class="ability-art-frame"></div>
-                    <div class="ability-cost attack-cost ability-cost-text"></div>
-                  </div>
-                  <div class="ability-info">
-                    <div class="ability-info-bg"></div>
-                    <div class="ability-header">
-                      <div class="ability-name ability-name-text"></div>
-                    </div>
-                    <div class="ability-description ability-desc-text"></div>
-                  </div>
-                </div>
-
-                <div class="ability" data-ability="frost">
-                  <div class="ability-art">
-                    <div class="ability-art-placeholder"></div>
-                    <div class="ability-art-frame"></div>
-                    <div class="ability-cost defense-cost ability-cost-text"></div>
-                  </div>
-                  <div class="ability-info">
-                    <div class="ability-info-bg"></div>
-                    <div class="ability-header">
-                      <div class="ability-name ability-name-text"></div>
-                    </div>
-                    <div class="ability-description ability-desc-text"></div>
-                  </div>
-                </div>
-
-                <div class="ability" data-ability="slam">
-                  <div class="ability-art">
-                    <div class="ability-art-placeholder"></div>
-                    <div class="ability-art-frame"></div>
-                    <div class="ability-cost attack-cost ability-cost-text"></div>
-                  </div>
-                  <div class="ability-info">
-                    <div class="ability-info-bg"></div>
-                    <div class="ability-header">
-                      <div class="ability-name ability-name-text"></div>
-                    </div>
-                    <div class="ability-description ability-desc-text"></div>
-                  </div>
-                </div>
-
-                <div class="ability" data-ability="meteor">
-                  <div class="ability-art">
-                    <div class="ability-art-placeholder"></div>
-                    <div class="ability-art-frame"></div>
-                    <div class="ability-cost ability-cost-text"></div>
-                  </div>
-                  <div class="ability-info">
-                    <div class="ability-info-bg"></div>
-                    <div class="ability-header">
-                      <div class="ability-name ability-name-text"></div>
-                    </div>
-                    <div class="ability-description ability-desc-text"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-name">
-                <h2>Combat Abilities</h2>
-              </div>
-
-              <div class="combat-stats">
-                <div class="combat-stat attack">
-                  <div class="combat-stat-icon">🗡️</div>
-                  <div class="combat-stat-fill-section">
-                    <div class="combat-stat-fill attack-fill"></div>
-                    <div class="combat-stat-text">6 / 20</div>
-                  </div>
-                </div>
-                <div class="combat-stat spell-power">
-                  <div class="combat-stat-icon">🔮</div>
-                  <div class="combat-stat-fill-section">
-                    <div class="combat-stat-fill spell-fill"></div>
-                    <div class="combat-stat-text">15 / 20</div>
-                  </div>
-                </div>
-                <div class="combat-stat defense">
-                  <div class="combat-stat-icon">🛡️</div>
-                  <div class="combat-stat-fill-section">
-                    <div class="combat-stat-fill defense-fill"></div>
-                    <div class="combat-stat-text">4 / 20</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="border-decoration top"></div>
-            <div class="border-decoration bottom"></div>
-            <div class="border-decoration left"></div>
-            <div class="border-decoration right"></div>
-          </div>
+    <div id="arena" class="arena-overlay">
+      <div class="arena-bg"></div>
+      <div class="stage">
+        <div class="duelist left"><div class="duelist-inner"></div></div>
+        <div class="battle-log" id="battleLog"></div>
+        <div class="duelist right"><div class="duelist-inner"></div></div>
+      </div>
+      <div class="arena-ui">
+        <div class="primary-button">
+          <button id="btnAgain" class="custom-button">Novo Duelo</button>
+        </div>
+        <div class="primary-button">
+          <button id="btnClose" class="custom-button">Sair</button>
         </div>
       </div>
     </div>
-  </template>
 
-  <div id="arena" class="arena-overlay">
-    <div class="arena-bg"></div>
-    <div class="stage">
-      <div class="duelist left"><div class="duelist-inner"></div></div>
-      <div class="battle-log" id="battleLog"></div>
-      <div class="duelist right"><div class="duelist-inner"></div></div>
-    </div>
-    <div class="arena-ui">
-      <div class="primary-button">
-        <button id="btnAgain" class="custom-button">Novo Duelo</button>
-      </div>
-      <div class="primary-button">
-        <button id="btnClose" class="custom-button">Sair</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
-</body>
+    <script src="src/js/app.js"></script>
+  </body>
 </html>

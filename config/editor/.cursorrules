@@ -1,0 +1,45 @@
+# Cursor Rules for Ethereal Arena dos Heróis
+
+## Project Overview
+
+This is a JavaScript RPG combat game with turn-based mechanics, featuring 4 hero classes (Mage, Warrior, Monk, Ninja) with unique abilities and progression system.
+
+## Code Style
+
+- Use Prettier for formatting (already configured)
+- Follow JavaScript ES6+ standards
+- Use camelCase for functions and variables
+- Use kebab-case for CSS classes
+- Use meaningful variable and function names
+- Add comments for complex logic
+
+## File Structure
+
+- `/src/css/` - Stylesheets
+- `/src/js/` - JavaScript logic
+- `/src/assets/images/` - Game images
+- `/src/data/` - JSON data files
+- `/scripts/` - Utility scripts
+- `/docs/` - Documentation
+
+## Development Guidelines
+
+- Always format code before committing
+- Use the versioning system for releases
+- Test functionality before pushing changes
+- Update documentation when adding features
+- Follow the existing code patterns
+
+## Auto-formatting
+
+- Format on save is enabled
+- Use `npm run format` to format all files
+- Use `npm run format:check` to check formatting
+- Pre-commit hooks will auto-format code
+
+## Version Control
+
+- Use semantic versioning
+- Update CHANGELOG.md for all changes
+- Use conventional commit messages
+- Run version scripts for releases

@@ -10,9 +10,9 @@
 
 **🎮 [Jogar Agora](https://desafio-classes.vercel.app)**
 
-![Ethereal - Arena dos Heróis](stream/preview.png)
+![Ethereal - Arena dos Heróis](src/assets/images/preview.png)
 
-*Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas respectivas estatísticas e habilidades*
+_Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas respectivas estatísticas e habilidades_
 
 ### 🎮 Características Visuais
 
@@ -38,16 +38,17 @@
 
 ## 🏆 Classes de Herói
 
-| Classe | Ataque Básico | Energia | Especialidade |
-|--------|---------------|---------|---------------|
-| **Mago** | magia | MP | Poder mágico devastador |
-| **Guerreiro** | espada | SP | Combate corpo a corpo |
-| **Monge** | artes marciais | SP | Técnicas de cura e defesa |
-| **Ninja** | shuriken | SP | Ataques furtivos e precisos |
+| Classe        | Ataque Básico  | Energia | Especialidade               |
+| ------------- | -------------- | ------- | --------------------------- |
+| **Mago**      | magia          | MP      | Poder mágico devastador     |
+| **Guerreiro** | espada         | SP      | Combate corpo a corpo       |
+| **Monge**     | artes marciais | SP      | Técnicas de cura e defesa   |
+| **Ninja**     | shuriken       | SP      | Ataques furtivos e precisos |
 
 ## 🎯 Sistema de Combate
 
 ### Mecânicas Principais
+
 - **Turnos Alternados**: Cada herói ataca em sequência
 - **Sistema de Energia**: MP para Magos, SP para outras classes
 - **Habilidades Especiais**: 4 habilidades por herói (ataque, poder, defesa, ultimate)
@@ -55,6 +56,7 @@
 - **Sistema de Guarda**: Habilidades defensivas reduzem dano
 
 ### Tipos de Habilidade
+
 - **Ataque**: Dano básico sem custo
 - **Poder**: Dano aumentado com custo de energia
 - **Defesa**: Cura e proteção temporária
@@ -92,12 +94,14 @@ python -m http.server 8000
 ## 🎨 Interface
 
 ### Cards de Herói
+
 - **Design Moderno**: Cards com efeitos de vidro e gradientes
 - **Informações Detalhadas**: HP, MP/SP, nível, XP
 - **Habilidades Visuais**: 4 abas com descrições e custos
 - **Animações**: Efeitos de hover, seleção e flip
 
 ### Arena de Batalha
+
 - **Visualização em Tempo Real**: Animações de ataque e defesa
 - **Log de Combate**: Histórico detalhado dos turnos
 - **Efeitos Visuais**: Glows, partículas e transições
@@ -106,31 +110,125 @@ python -m http.server 8000
 ## 📊 Sistema de Progressão
 
 ### Experiência e Níveis
+
 - **Ganho de XP**: 50 XP para vencedor, 10 XP para perdedor
 - **Níveis**: 10 níveis com requisitos crescentes de XP
 - **Melhorias**: HP, MP/SP e stats de combate aumentam por nível
 - **Persistência**: Progresso salvo automaticamente
 
 ### Stats de Combate
+
 - **Ataque**: Dano físico
 - **Poder Mágico**: Dano de habilidades especiais
 - **Defesa**: Redução de dano recebido
 
 ## 📁 Estrutura do Projeto
 
+Para detalhes completos sobre a organização de pastas, consulte a [documentação de estrutura](docs/STRUCTURE.md).
+
 ```
 desafioClasses/
-├── index.html          # Interface principal
-├── app.js              # Lógica do jogo
-├── styles.css          # Estilos gerais
-├── cards.css           # Estilos dos cards
-├── heroes.json         # Dados dos heróis
-├── stream/             # Imagens dos heróis
-│   ├── kael.png
-│   ├── ragnar.png
-│   ├── tenzin.png
-│   └── akari.png
-└── README.md           # Documentação
+├── index.html              # Interface principal
+├── src/                    # Código fonte
+│   ├── css/               # Estilos
+│   │   ├── styles.css     # Estilos gerais
+│   │   └── cards.css      # Estilos dos cards
+│   ├── js/                # JavaScript
+│   │   └── app.js         # Lógica do jogo
+│   ├── assets/            # Recursos
+│   │   └── images/        # Imagens
+│   │       ├── kael.png
+│   │       ├── ragnar.png
+│   │       ├── tenzin.png
+│   │       ├── akari.png
+│   │       ├── preview.png
+│   │       └── favicon.png
+│   └── data/              # Dados
+│       └── heroes.json    # Dados dos heróis
+├── scripts/               # Scripts utilitários
+│   └── version.js         # Script de versionamento
+├── docs/                  # Documentação
+│   ├── VERSIONING.md      # Documentação do versionamento
+│   └── STRUCTURE.md       # Documentação da estrutura
+├── VERSION                # Controle de versão
+├── CHANGELOG.md           # Histórico de mudanças
+├── package.json           # Configuração do projeto
+├── vercel.json            # Configuração do deploy
+├── .prettierrc            # Configuração do Prettier
+├── .prettierignore        # Arquivos ignorados pelo Prettier
+├── .editorconfig          # Configuração do EditorConfig
+├── .cursorrules           # Regras para Cursor AI
+├── .vscode/               # Configurações do VS Code
+│   ├── settings.json      # Configurações do editor
+│   ├── extensions.json    # Extensões recomendadas
+│   ├── launch.json        # Configuração de debug
+│   └── tasks.json         # Tarefas automatizadas
+├── .husky/                # Git hooks
+│   └── pre-commit         # Hook de pre-commit
+├── LICENSE                # Licença
+└── README.md              # Documentação principal
+```
+
+## 🔄 Sistema de Versionamento
+
+O projeto utiliza versionamento semântico (SemVer) com os seguintes arquivos:
+
+- **VERSION**: Contém a versão atual do projeto
+- **CHANGELOG.md**: Documenta todas as mudanças por versão
+- **scripts/version.js**: Script para automatizar o versionamento
+
+Para mais detalhes, consulte a [documentação de versionamento](docs/VERSIONING.md).
+
+## 🎨 Formatação de Código
+
+O projeto utiliza **Prettier** para manter a consistência na formatação do código:
+
+```bash
+# Formatar todos os arquivos
+npm run format
+
+# Verificar se os arquivos estão formatados
+npm run format:check
+
+# Formatar em modo watch (automático)
+npm run format:watch
+
+# Executar pre-commit hooks
+npm run pre-commit
+```
+
+### Configuração do Prettier
+
+- **Arquivo**: `.prettierrc`
+- **Ignorados**: `.prettierignore`
+- **Extensões**: JS, JSON, CSS, HTML, MD
+
+### Auto-formatação
+
+- **Format on Save**: Ativado no VS Code
+- **Pre-commit hooks**: Formatação automática antes de commits
+- **EditorConfig**: Configuração consistente entre editores
+- **Cursor Rules**: Regras para Cursor AI
+
+### Comandos de Versionamento
+
+```bash
+# Ver versão atual
+node tools/scripts/scripts/version.js current
+
+# Incrementar versão (patch, minor, major)
+node tools/scripts/scripts/version.js bump patch
+node tools/scripts/scripts/version.js bump minor
+node tools/scripts/scripts/version.js bump major
+
+# Definir versão específica
+node tools/scripts/scripts/version.js set 1.2.3
+
+# Usando npm scripts
+npm run version:current
+npm run version:bump:patch
+npm run version:bump:minor
+npm run version:bump:major
 ```
 
 ## 🎮 Como Jogar
@@ -144,12 +242,14 @@ desafioClasses/
 ## 🔧 Recursos Técnicos
 
 ### Classes JavaScript
+
 - **Hero**: Classe principal com propriedades e métodos
 - **Sistema de Cache**: Persistência via localStorage
 - **Lógica de Combate**: Algoritmos de escolha de habilidades
 - **Animações**: Sistema de efeitos visuais
 
 ### CSS Avançado
+
 - **Grid Layout**: Sistema responsivo de cards
 - **Flexbox**: Layout flexível da arena
 - **Animações CSS**: Keyframes e transições
@@ -167,6 +267,7 @@ desafioClasses/
 ## 🤝 Contribuição
 
 Contribuições são sempre bem-vindas! Sinta-se à vontade para:
+
 - Reportar bugs
 - Sugerir melhorias
 - Adicionar novas funcionalidades
