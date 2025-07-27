@@ -1,11 +1,17 @@
 let socket;
 
 function connect() {
-  socket = new WebSocket('ws://localhost:3001');
+  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  const socketUrl = `${protocol}://${location.hostname}:3001`;
+  socket = new WebSocket(socketUrl);
 
   socket.addEventListener('open', () => {
     console.log('Conectado ao servidor de matchmaking');
     socket.send(JSON.stringify({ type: 'join' }));
+  });
+
+  socket.addEventListener('error', () => {
+    console.error('Não foi possível conectar ao servidor de matchmaking');
   });
 
   socket.addEventListener('message', event => {
