@@ -1333,54 +1333,73 @@ document.getElementById('btnClose').addEventListener('click', resetArena);
 document.getElementById('btnReset').addEventListener('click', resetAllLevels);
 window.addEventListener('resize', () => {
   if (arena.classList.contains('show')) positionBattleLog();
+  if (tutorialOverlay.classList.contains('show')) showTutorialStep();
 });
 document.addEventListener('DOMContentLoaded', loadHeroesData);
 
 // Tutorial
 const tutorialOverlay = document.getElementById('tutorialOverlay');
+const tutorialPointer = document.getElementById('tutorialPointer');
 const tutorialMessage = document.getElementById('tutorialMessage');
-let tutorialStage = 0;
+const tutorialNext = document.getElementById('tutorialNext');
 
-function startTutorial() {
-  tutorialStage = 0;
-  tutorialOverlay.classList.add('show');
-  tutorialMessage.textContent =
-    'Clique com o botão direito em um card para selecionar';
-  document.querySelectorAll('.card-container').forEach((el, idx) => {
-    el.classList.add('tutorial-highlight');
-    if (idx < 2) el.classList.add('tutorial-pulse');
-  });
-}
+const tutorialSteps = [
+  {
+    target: '#grid',
+    text: 'Use o clique esquerdo para virar as cartas',
+    arrow: '👇',
+  },
+  {
+    target: '#grid',
+    text: 'Use o clique direito para selecionar um herói',
+    arrow: '👇',
+  },
+  {
+    target: '#btnStart',
+    text: 'Após escolher 2 heróis, clique em Iniciar Combate',
+    arrow: '👇',
+  },
+];
 
-function endTutorial() {
-  tutorialOverlay.classList.remove('show');
+let tutorialIndex = 0;
+
+function highlightTarget(selector) {
   document.querySelectorAll('.tutorial-highlight').forEach(el => {
-    el.classList.remove('tutorial-highlight', 'tutorial-pulse');
+    el.classList.remove('tutorial-highlight');
   });
+  const el = document.querySelector(selector);
+  if (!el) return;
+  el.classList.add('tutorial-highlight');
+  const rect = el.getBoundingClientRect();
+  const scrollY = window.scrollY || window.pageYOffset;
+  const scrollX = window.scrollX || window.pageXOffset;
+  tutorialPointer.style.top = `${rect.bottom + 10 + scrollY}px`;
+  tutorialPointer.style.left = `${rect.left + rect.width / 2 + scrollX}px`;
+  tutorialMessage.style.top = `${rect.bottom + 50 + scrollY}px`;
+  tutorialMessage.style.left = `${rect.left + rect.width / 2 + scrollX}px`;
 }
 
-document.getElementById('btnTutorial').addEventListener('click', startTutorial);
+function showTutorialStep() {
+  const step = tutorialSteps[tutorialIndex];
+  tutorialPointer.textContent = step.arrow;
+  tutorialMessage.textContent = step.text;
+  highlightTarget(step.target);
+}
 
-grid.addEventListener('contextmenu', e => {
-  if (!tutorialOverlay.classList.contains('show')) return;
-  if (tutorialStage === 0) {
-    tutorialMessage.textContent =
-      'Agora clique com o esquerdo para virar o card';
-    tutorialStage = 1;
-  }
+document.getElementById('btnTutorial').addEventListener('click', () => {
+  tutorialIndex = 0;
+  tutorialOverlay.classList.add('show');
+  showTutorialStep();
 });
 
-grid.addEventListener('click', () => {
-  if (!tutorialOverlay.classList.contains('show')) return;
-  if (tutorialStage === 1) {
-    tutorialMessage.textContent =
-      'Selecione dois heróis e clique em Iniciar Combate';
-    tutorialStage = 2;
-  }
-});
-
-btnStart.addEventListener('click', () => {
-  if (tutorialOverlay.classList.contains('show') && tutorialStage >= 2) {
-    endTutorial();
+tutorialNext.addEventListener('click', () => {
+  tutorialIndex += 1;
+  if (tutorialIndex >= tutorialSteps.length) {
+    tutorialOverlay.classList.remove('show');
+    document.querySelectorAll('.tutorial-highlight').forEach(el => {
+      el.classList.remove('tutorial-highlight');
+    });
+  } else {
+    showTutorialStep();
   }
 });
