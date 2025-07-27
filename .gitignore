@@ -51,4 +51,7 @@ coverage/
 .nyc_output/
 
 # Arquivos de documentação gerados
-docs/_build/ 
+docs/_build/
+
+# Configurações sensíveis
+src/js/firebaseConfig.js
