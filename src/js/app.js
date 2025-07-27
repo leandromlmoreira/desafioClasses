@@ -1335,3 +1335,15 @@ window.addEventListener('resize', () => {
   if (arena.classList.contains('show')) positionBattleLog();
 });
 document.addEventListener('DOMContentLoaded', loadHeroesData);
+
+// Ajuda
+const helpOverlay = document.getElementById('helpOverlay');
+document.getElementById('btnHelp').addEventListener('click', () => {
+  helpOverlay.classList.add('show');
+});
+document.getElementById('btnHelpClose').addEventListener('click', () => {
+  helpOverlay.classList.remove('show');
+});
+helpOverlay.addEventListener('click', e => {
+  if (e.target === helpOverlay) helpOverlay.classList.remove('show');
+});
