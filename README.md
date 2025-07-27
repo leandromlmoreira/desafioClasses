@@ -25,6 +25,8 @@ _Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas
 
 **Ethereal** é um sistema de combate por turnos desenvolvido em JavaScript que implementa um jogo de heróis com diferentes classes, habilidades e sistema de progressão. O projeto demonstra o uso avançado de classes, objetos, herança e programação orientada a objetos em JavaScript, oferecendo uma experiência de RPG medieval com interface moderna e responsiva.
 
+Agora conta também com um fluxo simples de autenticação via Google pelo Firebase. Após fazer login, o jogador escolhe um dos heróis disponíveis e segue para a arena.
+
 ## 🎮 Funcionalidades
 
 - ✅ **Sistema de Classes**: 4 tipos de heróis (Mago, Guerreiro, Monge, Ninja)
@@ -35,6 +37,8 @@ _Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas
 - ✅ **Arena de Batalha**: Sistema de duelo entre dois heróis
 - ✅ **Persistência**: Dados salvos no localStorage
 - ✅ **Design Responsivo**: Interface adaptável a diferentes telas
+- ✅ **Autenticação**: Login com Google usando Firebase
+- ✅ **Escolha de Herói**: Jogador seleciona seu herói após o login
 
 ## 🏆 Classes de Herói
 
@@ -233,11 +237,13 @@ npm run version:bump:major
 
 ## 🎮 Como Jogar
 
-1. **Seleção de Heróis**: Clique com botão direito para selecionar 2 heróis
-2. **Iniciar Combate**: Clique em "INICIAR COMBATE" quando 2 heróis estiverem selecionados
-3. **Acompanhar Batalha**: Assista às animações e log de combate
-4. **Ver Resultados**: Confira o vencedor e ganho de XP
-5. **Repetir**: Use "NOVAMENTE" para repetir o combate
+1. **Faça Login**: Acesse `login.html` e entre com sua conta Google
+2. **Escolha um Herói**: Após autenticar, selecione seu herói preferido
+3. **Seleção de Heróis para Combate**: Clique com botão direito para escolher 2 heróis
+4. **Iniciar Combate**: Clique em "INICIAR COMBATE" quando 2 heróis estiverem selecionados
+5. **Acompanhar Batalha**: Assista às animações e log de combate
+6. **Ver Resultados**: Confira o vencedor e ganho de XP
+7. **Repetir**: Use "NOVAMENTE" para repetir o combate
 
 ## 🔧 Recursos Técnicos
 

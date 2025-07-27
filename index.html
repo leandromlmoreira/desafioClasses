@@ -51,6 +51,7 @@
       <div class="titles">
         <h1 class="page-title">Ethereal</h1>
         <button id="btnHelp" class="help-button" aria-label="Ajuda">❓</button>
+        <button id="btnLogout" class="help-button" aria-label="Sair">⏻</button>
         <p class="page-sub">Use o ícone de ajuda para aprender a jogar</p>
       </div>
     </header>
@@ -313,6 +314,16 @@
       </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="src/js/auth.js"></script>
+    <script>
+      requireAuth();
+      if (!localStorage.getItem('userHero')) {
+        window.location.href = 'select-hero.html';
+      }
+      document.getElementById('btnLogout').addEventListener('click', logout);
+    </script>
     <script src="src/js/app.js"></script>
   </body>
 </html>
