@@ -1097,3 +1097,76 @@
   position: relative;
   cursor: pointer;
 }
+
+/* Tutorial */
+.tutorial-button {
+  margin-left: 12px;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  background: var(--ui-bg1);
+  border: 2px solid var(--ui-border);
+  color: var(--ui-text);
+  border-radius: 8px;
+  cursor: pointer;
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.tutorial-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 150;
+}
+.tutorial-overlay.show {
+  display: block;
+}
+.tutorial-pointer {
+  position: absolute;
+  font-size: 2rem;
+  color: #fff;
+  transform: translateX(-50%);
+}
+.tutorial-message {
+  position: absolute;
+  transform: translateX(-50%);
+  background: var(--ui-bg1);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  max-width: 260px;
+}
+.tutorial-next {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ui-bg1);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.tutorial-highlight {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 8px 4px rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 160;
+}
