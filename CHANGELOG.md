@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0] - 2025-07-27
+
+### Adicionado
+
+- Servidor de matchmaking com WebSocket
+- Script npm `server` para iniciar o servidor
+- Botão e script de cliente para buscar partidas
+
+### Alterado
+
+- Documentação atualizada com instruções do servidor
+
+### Corrigido
+
+- Correções de bugs
+
+---
+
 ## [1.0.1] - 2025-07-27
 
 ### Adicionado

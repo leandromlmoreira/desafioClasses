@@ -1,6 +1,6 @@
 {
   "name": "ethereal-arena-dos-herois",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Sistema de combate por turnos desenvolvido em JavaScript com diferentes classes de heróis",
   "main": "index.html",
   "scripts": {
@@ -15,7 +15,8 @@
     "version:bump:patch": "node tools/scripts/scripts/version.js bump patch",
     "version:bump:minor": "node tools/scripts/scripts/version.js bump minor",
     "version:bump:major": "node tools/scripts/scripts/version.js bump major",
-    "version:set": "node tools/scripts/scripts/version.js set"
+    "version:set": "node tools/scripts/scripts/version.js set",
+    "server": "node server/matchmaking.js"
   },
   "keywords": [
     "javascript",
@@ -45,5 +46,7 @@
   "devDependencies": {
     "prettier": "^3.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
 }
