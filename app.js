@@ -250,7 +250,7 @@ function buildCard(h) {
        }
     panel.querySelector('.ability-name-text').textContent=meta.name
     panel.querySelector('.ability-cost-text').textContent=meta.cost?`${meta.cost} ${h.tipo === 'Mago' ? 'MP' : 'SP'}`:'Sem Custo'
-      panel.querySelector('.ability-desc-text').textContent=meta.description || meta.desc
+      panel.querySelector('.ability-desc-text').textContent=meta.description || meta.desc || 'Descrição não disponível'
     }
   })
 
@@ -270,7 +270,8 @@ function buildCard(h) {
       const k=panel.dataset.ability
       chosenAbility.set(h.id,k)
       const a=h.abilities[k]
-      root.querySelector('.card-front .hero-desc').textContent=`Próximo: ${a.name} — ${a.desc}`
+      const abilityDesc = a.description || a.desc || 'Descrição não disponível'
+      root.querySelector('.card-front .hero-desc').textContent=`Próximo: ${a.name} — ${abilityDesc}`
       root.classList.remove('flipped')
       root.querySelectorAll('.art-placeholder img,.ability-art-placeholder img').forEach(img=>img.style.transform='scaleX(1)')
     })
@@ -343,6 +344,11 @@ function updateAllCards(){
     const cardElement = grid.querySelector(`[data-id="${hero.id}"]`)
     if(cardElement) {
       updateXP(cardElement, hero)
+      
+      const heroDesc = cardElement.querySelector('.card-front .hero-desc')
+      if(heroDesc) {
+        heroDesc.textContent = hero.desc
+      }
       
       const combatStats = cardElement.querySelectorAll('.combat-stat')
       if(combatStats.length > 0 && hero.combatStats){
@@ -1031,6 +1037,10 @@ function resetArena(){
     const inner=d.querySelector('.duelist-inner')
     if(inner){inner.classList.remove('attack-left','attack-right');forceResetInner(inner)}
   })
+  
+  setTimeout(() => {
+    updateAllCards()
+  }, 100)
 }
 
 function resetAllLevels(){

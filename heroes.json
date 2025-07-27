@@ -13,13 +13,13 @@
       "maxMp": 150,
       "sp": 0,
       "maxSp": 0,
-      "description": "Mestre das artes arcanas, Kael domina o poder elemental com precisão devastadora. Sua conexão mística permite canalizar energias primordiais através de seu bastão ancestral.",
+      "description": "MESTRE DAS ARTES ARCANAS, KAEL DOMINA O PODER ELEMENTAL COM PRECISÃO DEVASTADORA. SUA CONEXÃO MÍSTICA PERMITE CANALIZAR ENERGIAS PRIMORDIAIS ATRAVÉS DE SEU BASTÃO ANCESTRAL.",
       "combatStats": {
         "attack": 20,
         "spellPower": 90,
         "defense": 10
       },
-              "abilities": {
+      "abilities": {
         "attack": {
           "name": "Bastão Arcano",
           "description": "Ataque básico com bastão mágico que canaliza energia arcana",
@@ -62,13 +62,13 @@
       "maxMp": 0,
       "sp": 40,
       "maxSp": 120,
-      "description": "Monge sábio que transcendeu a dualidade corpo-mente. Sua disciplina espiritual permite canalizar chi para técnicas de combate e cura.",
+      "description": "MESTRE DAS ARTES MARCIAIS, TENZIN TRANSCENDE A DUALIDADE CORPO-MENTE. SUA DISCIPLINA ESPIRITUAL PERMITE CANALIZAR CHI PARA TÉCNICAS DE COMBATE E CURA.",
       "combatStats": {
         "attack": 30,
         "spellPower": 35,
         "defense": 55
       },
-              "abilities": {
+      "abilities": {
         "attack": {
           "name": "Punho de Ferro",
           "description": "Golpe preciso que concentra energia vital nos punhos",
@@ -113,13 +113,13 @@
       "maxMp": 0,
       "sp": 30,
       "maxSp": 100,
-      "description": "Guerreiro lendário cuja lâmina já provou seu valor em milhares de batalhas. Sua força bruta e técnica refinada fazem dele um oponente temível.",
+      "description": "GUERREIRO LENDÁRIO CUJA LÂMINA JÁ PROVOU SEU VALOR EM MILHARES DE BATALHAS. SUA FORÇA BRUTA E TÉCNICA REFINADA FAZEM DELE UM OPONENTE TEMÍVEL.",
       "combatStats": {
         "attack": 75,
         "spellPower": 15,
         "defense": 50
       },
-              "abilities": {
+      "abilities": {
         "attack": {
           "name": "Corte Preciso",
           "description": "Ataque básico com espada que combina força e técnica",
@@ -163,13 +163,13 @@
       "maxMp": 0,
       "sp": 50,
       "maxSp": 140,
-      "description": "Ninja das sombras que domina a arte da invisibilidade e ataques furtivos. Sua agilidade e técnicas secretas fazem dela uma assassina letal.",
+      "description": "NINJA DAS SOMBRAS QUE DOMINA A ARTE DA INVISIBILIDADE E ATAQUES FURTIVOS. SUA AGILIDADE E TÉCNICAS SECRETAS FAZEM DELA UMA ASSASSINA LETAL.",
       "combatStats": {
         "attack": 60,
         "spellPower": 45,
         "defense": 25
       },
-              "abilities": {
+      "abilities": {
         "attack": {
           "name": "Shuriken Preciso",
           "description": "Lança shurikens com precisão mortal",

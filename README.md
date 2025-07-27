@@ -1,12 +1,29 @@
-# ⚔️ Desafio Herói - Sistema de Combate
+# ⚔️ Ethereal - Arena dos Heróis
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://desafio-classes.vercel.app)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+## 🌐 Demo Online
+
+**🎮 [Jogar Agora](https://desafio-classes.vercel.app)**
+
+![Ethereal - Arena dos Heróis](https://desafio-classes.vercel.app/preview.png)
+
+*Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas respectivas estatísticas e habilidades*
+
+### 🎮 Características Visuais
+
+- **Cards Interativos**: Design moderno com efeitos de vidro e gradientes
+- **Temas por Classe**: Cada herói tem sua cor temática (Roxo para Mago, Verde para Monge, Vermelho para Guerreiro)
+- **Interface Responsiva**: Adaptável a diferentes tamanhos de tela
+- **Animações Suaves**: Efeitos visuais e transições fluidas
 
 ## 📋 Descrição
 
-Sistema de combate por turnos desenvolvido em JavaScript que implementa um jogo de heróis com diferentes classes, habilidades e sistema de progressão. O projeto demonstra o uso avançado de classes, objetos, herança e programação orientada a objetos em JavaScript.
+**Ethereal** é um sistema de combate por turnos desenvolvido em JavaScript que implementa um jogo de heróis com diferentes classes, habilidades e sistema de progressão. O projeto demonstra o uso avançado de classes, objetos, herança e programação orientada a objetos em JavaScript, oferecendo uma experiência de RPG medieval com interface moderna e responsiva.
 
 ## 🎮 Funcionalidades
 
@@ -50,6 +67,12 @@ Sistema de combate por turnos desenvolvido em JavaScript que implementa um jogo 
 - **CSS3**: Estilização avançada com animações
 - **LocalStorage**: Persistência de dados
 - **Canvas/Web APIs**: Efeitos visuais
+
+## 🚀 Deploy
+
+- **Plataforma**: [Vercel](https://vercel.com)
+- **URL**: https://desafio-classes.vercel.app
+- **Status**: ✅ Online e Funcionando
 
 ## 🚀 Como Executar
 

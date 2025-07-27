@@ -19,12 +19,32 @@
     align-items: center;
     justify-content: center;
     margin: 20px 0 30px;
-    padding: 20px;
-    background: linear-gradient(135deg, rgba(42,34,21,0.8), rgba(26,20,11,0.9));
-    border: 1px solid rgba(168,132,58,0.3);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(42,34,21,0.9), rgba(26,20,11,0.95));
+    border: 2px solid rgba(168,132,58,0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15), 0 0 20px rgba(168,132,58,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .controls::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168,132,58,0.6), transparent);
+  }
+  
+  .controls::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(168,132,58,0.1) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .controls-row {
@@ -39,13 +59,26 @@
   .selection-counter {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, rgba(168,132,58,0.2), rgba(168,132,58,0.1));
-    border: 1px solid rgba(168,132,58,0.4);
-    border-radius: 12px;
-    backdrop-filter: blur(8px);
+    gap: 14px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, rgba(168,132,58,0.25), rgba(168,132,58,0.15));
+    border: 2px solid rgba(168,132,58,0.5);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
     flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .selection-counter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(168,132,58,0.6), transparent);
   }
 
   .counter-icon {
@@ -69,8 +102,9 @@
   }
 
   .selection-counter.ready {
-    background: linear-gradient(135deg, rgba(34,197,94,0.3), rgba(34,197,94,0.2));
-    border-color: rgba(34,197,94,0.6);
+    background: linear-gradient(135deg, rgba(34,197,94,0.35), rgba(34,197,94,0.25));
+    border-color: rgba(34,197,94,0.7);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 20px rgba(34,197,94,0.3);
     animation: readyPulse 2s ease-in-out infinite;
   }
 
@@ -395,31 +429,33 @@
 
   /* Estilo de botões medieval/RPG */
   .custom-button {
-    height: 48px;
+    height: 52px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
-    min-width: 160px;
+    min-width: 180px;
     color: #f5e7c8;
     text-transform: uppercase;
     font-weight: 700;
     font-family: 'Cinzel', serif;
-    font-size: 13px;
-    letter-spacing: 1px;
-    background: linear-gradient(180deg, #3a2a1a, #2a1f15);
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    background: linear-gradient(180deg, #4a3a2a, #3a2f25);
     border: 2px solid #a8843a;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    padding: 0 20px;
+    padding: 0 24px;
     box-shadow: 
-      0 4px 12px rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.1),
-      inset 0 -1px 0 rgba(0,0,0,0.3);
+      0 6px 20px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.15),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 0 15px rgba(168,132,58,0.1);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(8px);
   }
 
   .custom-button::before {
@@ -450,14 +486,14 @@
   }
 
   .custom-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-      0 8px 20px rgba(0,0,0,0.5),
-      inset 0 1px 0 rgba(255,255,255,0.15),
-      inset 0 -1px 0 rgba(0,0,0,0.4),
-      0 0 20px rgba(168,132,58,0.3);
+      0 10px 25px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -1px 0 rgba(0,0,0,0.5),
+      0 0 25px rgba(168,132,58,0.4);
     border-color: #c4a062;
-    background: linear-gradient(180deg, #4a3a2a, #3a2f25);
+    background: linear-gradient(180deg, #5a4a3a, #4a3f35);
   }
 
   .custom-button:active {
