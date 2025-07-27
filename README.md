@@ -10,7 +10,7 @@
 
 **🎮 [Jogar Agora](https://desafio-classes.vercel.app)**
 
-![Ethereal - Arena dos Heróis](https://desafio-classes.vercel.app/preview.png)
+![Ethereal - Arena dos Heróis](stream/preview.png)
 
 *Interface do jogo mostrando os cards dos heróis Kael, Tenzin e Ragnar com suas respectivas estatísticas e habilidades*
 
